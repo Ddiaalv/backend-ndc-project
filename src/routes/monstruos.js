@@ -28,4 +28,17 @@ router.get('/monstruo/:id', (req, res, next) => {
   );
 });
 
+router.get('/monstruo/habitat/:id', (req, res, next) => {
+  mysqlConnection.query(
+    `SELECT h.habitat FROM monstruo AS m INNER JOIN monstruo_habitat AS mh ON m.id_monstruo = mh.id_monstruo INNER JOIN habitat AS h ON h.id_habitat = mh.id_habitat WHERE m.id_monstruo = '${req.params.id}'`,
+    (error, rows) => {
+      if (!error) {
+        res.json(rows);
+      } else {
+        console.log(error);
+      }
+    }
+  );
+});
+
 module.exports = router;
