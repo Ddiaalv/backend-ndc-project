@@ -54,4 +54,17 @@ router.get('/monstruo/materiales/:id', (req, res, next) => {
   );
 });
 
+router.get('/monstruo/puntodebil/:id', (req, res, next) => {
+  mysqlConnection.query(
+    `SELECT MPD.corte, MPD.contundente, MPD.disparo, MPD.zona FROM monstruo_puntodebil AS MPD WHERE id_monstruo = '${req.params.id}'`,
+    (error, rows) => {
+      if (!error) {
+        res.json(rows);
+      } else {
+        console.log(error);
+      }
+    }
+  );
+});
+
 module.exports = router;
