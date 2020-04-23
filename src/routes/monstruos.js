@@ -41,22 +41,9 @@ router.get('/monstruo/habitat/:id', (req, res, next) => {
   );
 });
 
-router.get('/monstruo/materiales/:id', (req, res, next) => {
+router.get('/monstruo/puntodebil/:id', (req, res, next) => {
   mysqlConnection.query(
-    `SELECT MM.id_monstruo, MM.cortados, MM.rango, MM.frecuencia, M.nombre, M.icon FROM monstruo_material AS MM INNER JOIN material AS M ON M.id = MM.id_material WHERE MM.id_monstruo = '${req.params.id}'`,
-    (error, rows) => {
-      if (!error) {
-        res.json(rows);
-      } else {
-        console.log(error);
-      }
-    }
-  );
-});
-
-router.get('/monstruo/materiales/rangoBajoCortados/:idMonstruo', (req, res, next) => {
-  mysqlConnection.query(
-    `SELECT MM.id_monstruo, MM.cortados, MM.rango, MM.frecuencia, M.nombre, M.icon FROM monstruo_material AS MM INNER JOIN material AS M ON M.id = MM.id_material WHERE MM.id_monstruo = '${req.params.idMonstruo}' AND MM.rango = 'bajo' AND MM.cortados = 'si'`,
+    `SELECT MPD.corte, MPD.contundente, MPD.disparo, MPD.zona FROM monstruo_puntodebil AS MPD WHERE id_monstruo = '${req.params.id}'`,
     (error, rows) => {
       if (!error) {
         res.json(rows);
@@ -81,11 +68,12 @@ router.get('/monstruo/materiales/:idMonstruo/:idRango/:idCorte', (req, res, next
   );
 });
 
-router.get('/monstruo/puntodebil/:id', (req, res, next) => {
+router.get('/monstruo/materiales/zona/:idMonstruo/:idRango', (req, res, next) => {
   mysqlConnection.query(
-    `SELECT MPD.corte, MPD.contundente, MPD.disparo, MPD.zona FROM monstruo_puntodebil AS MPD WHERE id_monstruo = '${req.params.id}'`,
+    `SELECT MRM.zona, MRM.rango, M.nombre, M.icon FROM monstruo_rangomaterial AS MRM INNER JOIN material AS M ON MRM.id_material01 = M.id WHERE MRM.id_monstruo = ${req.params.idMonstruo} AND MRM.rango = '${req.params.idMonstruo}' ORDER BY MRM.rango DESC'`,
     (error, rows) => {
       if (!error) {
+        console.log(res);
         res.json(rows);
       } else {
         console.log(error);
