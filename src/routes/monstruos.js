@@ -59,7 +59,6 @@ router.get('/monstruo/materiales/:idMonstruo/:idRango/:idCorte', (req, res, next
     `SELECT MM.id_monstruo, MM.cortados, MM.rango, MM.frecuencia, M.nombre, M.icon FROM monstruo_material AS MM INNER JOIN material AS M ON M.id = MM.id_material WHERE MM.id_monstruo = '${req.params.idMonstruo}' AND MM.rango = '${req.params.idRango}' AND MM.cortados = '${req.params.idCorte}'`,
     (error, rows) => {
       if (!error) {
-        console.log(res);
         res.json(rows);
       } else {
         console.log(error);
@@ -70,10 +69,9 @@ router.get('/monstruo/materiales/:idMonstruo/:idRango/:idCorte', (req, res, next
 
 router.get('/monstruo/materiales/zona/:idMonstruo/:idRango', (req, res, next) => {
   mysqlConnection.query(
-    `SELECT MRM.zona, MRM.rango, M.nombre, M.icon FROM monstruo_rangomaterial AS MRM INNER JOIN material AS M ON MRM.id_material01 = M.id WHERE MRM.id_monstruo = '${req.params.idMonstruo}' AND MRM.rango = '${req.params.idRango}' ORDER BY MRM.rango DESC`,
+    `SELECT MRM.zona, MRM.rango, M.nombre, M.icon FROM monstruo_rangomaterial AS MRM INNER JOIN material AS M ON MRM.id_material01 = M.id WHERE MRM.id_monstruo = '${req.params.idMonstruo}' AND MM.rango = '${req.params.idRango}' ORDER BY MRM.rango DESC`,
     (error, rows) => {
       if (!error) {
-        console.log(res);
         res.json(rows);
       } else {
         console.log(error);
