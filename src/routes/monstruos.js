@@ -67,9 +67,9 @@ router.get('/monstruo/materiales/:idMonstruo/:idRango/:idCorte', (req, res, next
   );
 });
 
-router.get('/monstruo/materiales/zona/:idMonstruo/:idRango', (req, res, next) => {
+router.get('/monstruo/materiales/zona/:numMonster/:rango', (req, res, next) => {
   mysqlConnection.query(
-    `SELECT MRM.zona, MRM.rango, M.nombre, M.icon FROM monstruo_rangomaterial AS MRM INNER JOIN material AS M ON MRM.id_material01 = M.id WHERE MRM.id_monstruo = '${req.params.idMonstruo}' AND MM.rango = '${req.params.idRango}' ORDER BY MRM.rango DESC`,
+    `SELECT MRM.zona, MRM.rango, M.nombre, M.icon FROM monstruo_rangomaterial AS MRM INNER JOIN material AS M ON MRM.id_material01 = M.id WHERE MRM.id_monstruo = '${req.params.numMonster}' AND MM.rango = '${req.params.rango}' ORDER BY MRM.rango DESC`,
     (error, rows) => {
       if (!error) {
         res.json(rows);
