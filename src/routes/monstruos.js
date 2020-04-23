@@ -54,6 +54,32 @@ router.get('/monstruo/materiales/:id', (req, res, next) => {
   );
 });
 
+router.get('/monstruo/materiales/rangoBajoCortados/:idMonstruo', (req, res, next) => {
+  mysqlConnection.query(
+    `SELECT MM.id_monstruo, MM.cortados, MM.rango, MM.frecuencia, M.nombre, M.icon FROM monstruo_material AS MM INNER JOIN material AS M ON M.id = MM.id_material WHERE MM.id_monstruo = '${req.params.idMonstruo}' AND MM.rango = 'bajo' AND MM.cortados = 'si'`,
+    (error, rows) => {
+      if (!error) {
+        res.json(rows);
+      } else {
+        console.log(error);
+      }
+    }
+  );
+});
+
+router.get('/monstruo/materiales/rangoBajoRecompensa/:idMonstruo', (req, res, next) => {
+  mysqlConnection.query(
+    `SELECT MM.id_monstruo, MM.cortados, MM.rango, MM.frecuencia, M.nombre, M.icon FROM monstruo_material AS MM INNER JOIN material AS M ON M.id = MM.id_material WHERE MM.id_monstruo = '${req.params.idMonstruo}' AND MM.rango = 'bajo' AND MM.cortados = 'no'`,
+    (error, rows) => {
+      if (!error) {
+        res.json(rows);
+      } else {
+        console.log(error);
+      }
+    }
+  );
+});
+
 router.get('/monstruo/puntodebil/:id', (req, res, next) => {
   mysqlConnection.query(
     `SELECT MPD.corte, MPD.contundente, MPD.disparo, MPD.zona FROM monstruo_puntodebil AS MPD WHERE id_monstruo = '${req.params.id}'`,
