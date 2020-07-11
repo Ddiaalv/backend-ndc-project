@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from "express";
+import express, {NextFunction, Request, Response} from "express";
 import bodyParser from "body-parser";
 import * as path from "path";
 import monsterRoutes from "./routes/monsters";
@@ -7,11 +7,11 @@ import monsterRoutes from "./routes/monsters";
 const nodeca = express();
 
 // Settings
-const PORT = process.env.PORT || 3011;
-nodeca.use(bodyParser.json());
-nodeca.use(bodyParser.urlencoded({ extended: true }));
+const PORT = process.env.PORT || 3010;
 
 //Middlewares
+nodeca.use(bodyParser.json());
+nodeca.use(bodyParser.urlencoded({ extended: true }));
 nodeca.use(express.static(path.join(__dirname, "public")));
 nodeca.use((req: Request, res: Response, next: NextFunction) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -27,5 +27,6 @@ nodeca.use(monsterRoutes);
 
 // Starting the server
 nodeca.listen(PORT, () => {
-  console.log(`Server iniciado en el puerto: ${PORT}`);
+  console.log(`El server iniciado en el puerto: ${PORT}`);
+  console.log('NODE_ENV: ', process.env.NODE_ENV)
 });

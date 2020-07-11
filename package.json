@@ -4,25 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "cross-env NODE_ENV=production node dist/index.js",
+    "dev": "cross-env NODE_ENV=development nodemon",
     "clean:win": "del dist",
     "clean:lin": "rm -rf dist",
     "build": "tsc",
-    "ts:node": "ts-node src/index.ts",
-    "start": "node dist/index.js",
-    "dev": "nodemon"
+    "ts:node": "ts-node src/index.ts"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mysql": "^2.18.1",
-    "body-parser": "^1.19.0",
-    "compression": "^1.7.4"
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.7",
     "@types/mysql": "^2.15.14",
+    "cross-env": "^7.0.2",
     "nodemon": "^2.0.4",
     "prettier": "2.0.5",
     "ts-node": "^8.10.2",
