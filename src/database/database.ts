@@ -1,7 +1,7 @@
 import mysql from "mysql";
-import dotenv from 'dotenv'
+import dotenv from "dotenv";
 
-dotenv.config({ path: `.env.${process.env.NODE_ENV}` })
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 export const mysqlConnection = mysql.createConnection({
   host: process.env.DB_HOST,
