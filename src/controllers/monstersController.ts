@@ -10,9 +10,14 @@ export const getAllMonsters = (req: Request, res: Response) => {
     monstersQuery,
     (error: MysqlError | null, monsters: MonstersProps) => {
       if (!error) {
-        res.json(monsters);
+        if (monsters !== undefined) {
+          res.json(monsters);
+        } else {
+          res.sendStatus(400);
+        }
       } else {
         console.log(error);
+        console.log(res.statusCode);
         res.sendStatus(500);
       }
     }
@@ -28,7 +33,11 @@ export const getMonster = (req: Request, res: Response) => {
     [monsterId],
     (error: MysqlError | null, monster: MonsterProps) => {
       if (!error) {
-        res.send(monster[0]);
+        if (monster[0] !== undefined) {
+          res.send(monster[0]);
+        } else {
+          res.sendStatus(400);
+        }
       } else {
         console.log(error);
         res.sendStatus(500);
@@ -46,7 +55,12 @@ export const getMonsterHabitat = (req: Request, res: Response) => {
     [monsterId],
     (error: MysqlError | null, habitat) => {
       if (!error) {
-        res.json(habitat);
+        console.log(habitat);
+        if (habitat.length > 0) {
+          res.send(habitat);
+        } else {
+          res.sendStatus(400);
+        }
       } else {
         console.log(error);
         res.sendStatus(500);
@@ -64,7 +78,11 @@ export const getMonsterWeakPoints = (req: Request, res: Response) => {
     [monsterId],
     (error: MysqlError | null, weakPoints) => {
       if (!error) {
-        res.json(weakPoints);
+        if (weakPoints.length > 0) {
+          res.json(weakPoints);
+        } else {
+          res.sendStatus(400);
+        }
       } else {
         console.log(error);
         res.sendStatus(500);
@@ -85,7 +103,11 @@ export const getMonsterMaterials = (req: Request, res: Response) => {
     [monsterId, monsterRango, monsterCorte],
     (error: MysqlError | null, materials) => {
       if (!error) {
-        res.json(materials);
+        if (materials.length > 0) {
+          res.json(materials);
+        } else {
+          res.sendStatus(400);
+        }
       } else {
         console.log(error);
         res.sendStatus(500);
@@ -104,7 +126,11 @@ export const getMonsterMaterialByZone = (req: Request, res: Response) => {
     [monsterId, monsterRank],
     (error: MysqlError | null, materialByZone) => {
       if (!error) {
-        res.json(materialByZone);
+        if (materialByZone.length > 0) {
+          res.json(materialByZone);
+        } else {
+          res.sendStatus(400);
+        }
       } else {
         console.log(error);
         res.sendStatus(500);
