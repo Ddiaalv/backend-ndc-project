@@ -1,0 +1,86 @@
+paths:
+  /monsters/{monsterId}: # path of the user from your endpoint
+    get:
+      tags:
+        - "Monsters"
+      summary: "Find monster by ID"
+      description: "Returns a single monster"
+      operationId: "getMonster"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "monsterId"
+          in: "path"
+          description: "ID of monster to return"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/monster"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Pet not found"
+definitions: # Schema defination for request body
+
+  monster:
+    type: object
+    properties:
+      orden_menu:
+        type: 'integer'
+      nombre:
+        type: 'string'
+      ruta:
+        type: 'string'
+      especie:
+        type: 'string'
+      tipo:
+        type: 'string'
+      rango:
+        type: 'string'
+      caracteristicas:
+        type: 'string'
+      notas:
+        type: 'string'
+      tamano_min:
+        type: 'integer'
+      tamano_max:
+        type: 'integer'
+      fuego:
+        type: 'integer'
+      agua:
+        type: 'integer'
+      rayo:
+        type: 'integer'
+      hielo:
+        type: 'integer'
+      draco:
+        type: 'integer'
+      veneno:
+        type: 'integer'
+      sueno:
+        type: 'integer'
+      paralisis:
+        type: 'integer'
+      nitro:
+        type: 'integer'
+      aturdimiento:
+        type: 'integer'
+      elemento01:
+        type: 'string'
+      elemento02:
+        type: 'string'
+      resistencia01:
+        type: 'string'
+      resistencia02:
+        type: 'string'
+      resistencia03:
+        type: 'string'
+      estado01:
+        type: 'string'
+      estado02:
+        type: 'string'
+      estado03:
+        type: 'string'

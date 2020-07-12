@@ -1,0 +1,41 @@
+paths:
+  /monsters:
+    get:
+      tags:
+        - "Monsters"
+      summary: "Find all monsters"
+      description: "Returns a all monsters"
+      operationId: "getAllMonsters"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/monsters"
+        "404":
+          description: "Monsters not found"
+definitions:
+  monsters:
+    type: object
+    properties:
+      orden_menu:
+        type: "integer"
+      nombre:
+        type: "string"
+      ruta:
+        type: "string"
+      tipo:
+        type: "string"
+      especie:
+        type: "string"
+      fuego:
+        type: "integer"
+      agua:
+        type: "integer"
+      rayo:
+        type: "integer"
+      hielo:
+        type: "integer"
+      draco:
+        type: "integer"
