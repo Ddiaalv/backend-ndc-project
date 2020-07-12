@@ -3,5 +3,5 @@ node_modules
 .env.development
 .env.production
 .idea
-./dist
+dist
 
