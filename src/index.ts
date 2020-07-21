@@ -2,6 +2,8 @@ import express, { NextFunction, Request, Response } from "express";
 import bodyParser from "body-parser";
 import * as path from "path";
 import monsterRoutes from "./routes/monsters";
+import armorRoutes from "./routes/armors";
+import weaponRoutes from "./routes/weapons";
 
 const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
@@ -11,17 +13,17 @@ const swaggerDefinition = {
   info: {
     title: "REST API for NODECA",
     version: "1.0.0",
-    description: "This is the REST API for NODECA",
+    description: "This is the REST API for NODECA"
   },
   host: "localhost:3010",
-  basePath: "/",
+  basePath: "/"
 };
 
 // options for the swagger docs
 const options = {
   // import swaggerDefinitions
   swaggerDefinition,
-  apis: ["./docs/**/*.yaml"],
+  apis: ["./docs/**/*.yaml"]
 };
 
 // initialize swagger-jsdoc
@@ -49,6 +51,8 @@ nodeca.use((req: Request, res: Response, next: NextFunction) => {
 
 // Routes
 nodeca.use(monsterRoutes);
+nodeca.use(armorRoutes);
+nodeca.use(weaponRoutes);
 
 // Starting the server
 nodeca.listen(PORT, () => {
