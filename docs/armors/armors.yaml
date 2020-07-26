@@ -1,0 +1,61 @@
+paths:
+  /armors:
+    get:
+      tags:
+        - "Armors"
+      summary: "Find all armors"
+      description: "Returns a all armors"
+      operationId: "getAllArmors"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/armors"
+        "404":
+          description: "Armors not found"
+definitions:
+  armors:
+    type: object
+    properties:
+      id:
+        type: "integer"
+      nombre:
+        type: "string"
+      ruta:
+        type: "string"
+      tipo:
+        type: "string"
+      rama:
+        type: "string"
+      rango:
+        type: "string"
+      nivel:
+        type: "integer"
+      rareza:
+        type: "integer"
+      defensa:
+        type: "integer"
+      ranura01:
+        type: "string"
+      ranura02:
+        type: "string"
+      ranura03:
+        type: "string"
+      fuego:
+        type: "integer"
+      agua:
+        type: "integer"
+      rayo:
+        type: "integer"
+      hielo:
+        type: "integer"
+      draco:
+        type: "integer"
+      precio:
+        type: "integer"
+      habilidad1:
+        type: "string"
+      habilidad2:
+        type: "string"

@@ -1,0 +1,103 @@
+paths:
+  /weapons:
+    get:
+      tags:
+        - "Weapons"
+      summary: "Find all weapons"
+      description: "Returns a all weapons"
+      operationId: "getAllWeapons"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/weapons"
+        "404":
+          description: "Weapons not found"
+definitions:
+  weapons:
+    type: object
+    properties:
+      id:
+        type: "integer"
+      nombre:
+        type: "string"
+      rama:
+        type: "string"
+      rama_evo:
+        type: "number"
+      ruta:
+        type: "string"
+      rareza:
+        type: "integer"
+      evolucion:
+        type: "string"
+      tipo:
+        type: "string"
+      tipo_arma:
+        type: "string"
+      precio:
+        type: "integer"
+      ataque:
+        type: "integer"
+      danio_elemento01?:
+        type: "integer"
+      elemento_01?:
+        type: "string"
+      elemento01?:
+        type: "string"
+      danio_elemento02?:
+        type: "integer"
+      elemento_02?:
+        type: "string"
+      elemento02?:
+        type: "string"
+      afilado?:
+        type: "string"
+      afinidad?:
+        type: "integer"
+      defensa?:
+        type: "integer"
+      sello_ancianos?:
+        type: "string"
+      ranura01:
+        type: "string"
+      ranura02?:
+        type: "string"
+      ranura03?:
+        type: "string"
+      tipo_vial?:
+        type: "string"
+      danio_vial?:
+        type: "integer"
+      elemento_vial?:
+        type: "string"
+      numero_disparos?:
+        type: "integer"
+      tipo_disparo?:
+        type: "string"
+      nota01?:
+        type: "string"
+      nota02?:
+        type: "string"
+      nota03?:
+        type: "string"
+      modificaciones?:
+        type: "integer"
+      desvio?:
+        type: "string"
+      tiro_especial?:
+        type: "string"
+      bonus_kinsecto?:
+        type: "string"
+      vial01?:
+        type: "string"
+      vial02?:
+        type: "string"
+      vial03?:
+        type: "string"
+      vial04?:
+        type: "string"
+      vial05?:
+        type: "string"
