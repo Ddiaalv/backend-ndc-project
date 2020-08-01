@@ -33,7 +33,7 @@ const swaggerSpec = swaggerJSDoc(options);
 const nodeca = express();
 
 // Settings
-const PORT = process.env.PORT || 3011;
+const PORT = process.env.PORT || 3010;
 
 //Middlewares
 nodeca.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
