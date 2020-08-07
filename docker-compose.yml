@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  database:
+    image: mariadb:10
+    container_name: database-nodeca
+    restart: on-failure
+    environment:
+      MYSQL_DATABASE: nodeca
+      MYSQL_ROOT_PASSWORD: secret
+    ports:
+      - 3306:3306
+    volumes:
+      - mariadb:/var/lib/mysql
+  app:
+    build: .
+    container_name: backend-nodeca
+    restart: on-failure
+    environment:
+      - NODE_ENV=development
+      - DB_HOST=database
+      - DB_DATABASE=nodeca
+      - DB_USER=root
+      - DB_PASSWORD=secret
+    ports:
+      - 3010:3010
+    links:
+      - database
+    depends_on:
+      - database
+volumes:
+  mariadb:
