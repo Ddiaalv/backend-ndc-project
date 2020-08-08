@@ -1,7 +1,19 @@
-node_modules
-.env
 .env.development
 .env.production
-.idea
-dist
+.env.test
+*.log
 
+# Dependency directory
+node_modules
+bower_components
+
+# Editors
+.idea
+*.iml
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Ignore built ts files
+dist

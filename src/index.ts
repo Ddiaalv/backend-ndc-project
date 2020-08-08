@@ -59,3 +59,5 @@ nodeca.listen(PORT, () => {
   console.log(`El server iniciado en el puerto: ${PORT}`);
   console.log("NODE_ENV: ", process.env.NODE_ENV);
 });
+
+export default nodeca;
