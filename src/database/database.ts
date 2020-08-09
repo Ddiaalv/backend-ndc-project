@@ -1,5 +1,5 @@
-import mysql from "mysql";
-import dotenv from "dotenv";
+import mysql from 'mysql';
+import dotenv from 'dotenv';
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
@@ -14,6 +14,6 @@ mysqlConnection.connect((error: any) => {
   if (error) {
     console.log(error);
   } else {
-    console.log("La base de datos se ha conectado correctamente.");
+    console.log('La base de datos se ha conectado correctamente.');
   }
 });

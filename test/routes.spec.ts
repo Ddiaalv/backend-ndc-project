@@ -1,28 +1,28 @@
-import request from "supertest";
-import index from "../src/index";
+import request from 'supertest';
+import index from '../src/index';
 
-describe("GET petitions", () => {
-  it("monsters should return 200 OK", () => {
+describe('GET petitions', () => {
+  it('monsters should return 200 OK', () => {
     return request(index)
-      .get("/monsters")
+      .get('/monsters')
       .expect(200);
   });
 
-  it("monsters/Rathalos should return 200 OK", () => {
+  it('monsters/Rathalos should return 200 OK', () => {
     return request(index)
-      .get("/monsters/Rathalos")
+      .get('/monsters/Rathalos')
       .expect(200);
   });
 
-  it("/armors should return 200 OK", () => {
+  it('/armors should return 200 OK', () => {
     return request(index)
-      .get("/armors")
+      .get('/armors')
       .expect(200);
   });
 
-  it("/weapons should return 200 OK", () => {
+  it('/weapons should return 200 OK', () => {
     return request(index)
-      .get("/weapons")
+      .get('/weapons')
       .expect(200);
   });
 });
